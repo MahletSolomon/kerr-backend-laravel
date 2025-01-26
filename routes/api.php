@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\PostController;
 use \App\Http\Controllers\SearchController;
 
 
@@ -17,6 +18,15 @@ Route::prefix('/v1/user')->group(function (){
     });
 });
 
+Route::prefix('/v1/post')->group(function (){
+   Route::controller(PostController::class)->group(function (){
+       Route::get('','getAllPost');
+       Route::post('','postPost');
+       Route::get('/{id}','getPost');
+       Route::delete('/{id}','deletePost');
+       Route::patch('/{id}/view','updatePostView');
+   });
+});
 Route::prefix('/v1/search')->group(function (){
    Route::controller(SearchController::class)->group(function (){
        Route::get('/user','searchUser');
