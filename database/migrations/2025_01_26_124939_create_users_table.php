@@ -19,6 +19,13 @@ return new class extends Migration
             $table->string('middle_name', 30)->nullable();
             $table->string('last_name', 30);
             $table->text('profile_picture')->nullable();
+            $table->integer('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('gender',6)->nullable();
+            $table->string('location',30)->nullable();
+            $table->string('industry',20)->nullable();
+            $table->string('experience',20)->nullable();
+
             $table->timestamps();
         });
     }

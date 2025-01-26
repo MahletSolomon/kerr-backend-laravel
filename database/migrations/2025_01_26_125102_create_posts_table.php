@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('post_title', 30); // Equivalent to `post_title` varchar(30)
             $table->string('post_caption', 255); // Equivalent to `post_caption` varchar(255)
             $table->text('post_thumbnail'); // Equivalent to `post_thumbnail` text NOT NULL
+            $table->integer('view')->default(0); // Equivalent to `post_thumbnail` text NOT NULL
+            $table->integer('save')->default(0); // Equivalent to `post_thumbnail` text NOT NULL
             $table->json('post_image'); // Equivalent to `post_image` json NOT NULL
             $table->timestamps(); // Adds `created_at` and `updated_at` columns
 

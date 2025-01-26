@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('message_text')->nullable(); // Equivalent to `message_text` text (nullable)
             $table->json('message_image')->nullable(); // Equivalent to `message_image` json (nullable)
             $table->string('message_type', 10); // Equivalent to `message_type` varchar(10) NOT NULL
+            $table->timestamp('created_at')->useCurrent(); // Equivalent to `created_at` timestamp NOT NULL
 
             // Indexes for optimization
             $table->index('user_id'); // Index for `user_id`

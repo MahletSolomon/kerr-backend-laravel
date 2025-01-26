@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('total_rating')->default(0); // Equivalent to `total_rating` int default 0
             $table->decimal('average_rating', 10, 2)->default(0); // Equivalent to `average_rating` decimal(10,2) default 0
             $table->integer('success_rating')->default(0); // Equivalent to `success_rating` int default 0
+            $table->integer('success_percentage')->default(0); // Equivalent to `success_rating` int default 0
             $table->integer('total_job')->default(0); // Equivalent to `total_job` int default 0
             $table->integer('total_job_completed')->default(0); // Equivalent to `total_job_completed` int default 0
             $table->unsignedBigInteger('user_id')->unique(); // Equivalent to `user_id` int unique

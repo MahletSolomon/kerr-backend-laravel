@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_2_id'); // Equivalent to `user_2_id` int
             $table->text('last_sent_message')->nullable();
             $table->timestamp('created_at')->useCurrent(); // Equivalent to `created_at` timestamp NOT NULL
+            $table->timestamp('last_sent_time')->useCurrent(); // Equivalent to `created_at` timestamp NOT NULL
 
             // Indexes for optimization
             $table->index('user_1_id'); // Index for `user_1_id`
