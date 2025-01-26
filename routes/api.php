@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use \App\Http\Controllers\UserController;
+
+
 Route::prefix('/v1/user')->group(function (){
     Route::controller(UserController::class)->group(function (){
         Route::post('/','postUser');
@@ -13,3 +15,6 @@ Route::prefix('/v1/user')->group(function (){
         Route::get('/{id}/complete','getAllUserCompleteRequest');
     });
 });
+
+
+
