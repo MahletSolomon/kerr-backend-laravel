@@ -13,8 +13,21 @@ use App\Models\Post;
 
 class User extends Model
 {
+    protected $fillable = [
+        'username',
+        'password',
+        'first_name',
+        'last_name',
+        'profile_picture',
+        'phone',
+        'email',
+        'gender',
+        'location',
+        'industry',
+        'experience',
+    ];
 
-    function getUserPost(){
+    function post(){
         return $this->hasMany(Post::class);
     }
 }
