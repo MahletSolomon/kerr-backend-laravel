@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\PostController;
+use \App\Http\Controllers\JobController;
 use \App\Http\Controllers\SearchController;
 
 
@@ -32,6 +32,28 @@ Route::prefix('/v1/search')->group(function (){
        Route::get('/user','searchUser');
        Route::get('/job','searchJob');
        Route::get('/post','searchPost');
+   });
+});
+Route::prefix('/v1/job')->group(function (){
+   Route::controller(JobController::class)->group(function (){
+       Route::get('/', 'getAllJob');
+       Route::post('/', 'postJob');
+
+       Route::prefix('/{id}')->group(function () {
+           Route::get('/', 'getJob');
+           Route::delete('/', 'deleteJob');
+           Route::post('/job-contract', 'postJobContract');
+
+           Route::prefix('/complete')->group(function () {
+               Route::post('/', 'postJobCompletionRequest');
+               Route::get('/', 'getJobCompletionRequest');
+               Route::delete('/', 'deleteJobCompletionRequest');
+           });
+
+           Route::put('/finish', 'finishJob');
+           Route::get('/job-bid', 'getJobBid');
+           Route::get('/job-offer', 'getJobOffer');
+       });
    });
 });
 
