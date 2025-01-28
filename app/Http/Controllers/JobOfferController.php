@@ -68,5 +68,27 @@ class JobOfferController extends Controller
             ], 500);
         }
     }
+    public function deleteOffer(Request $request, $id)
+    {
+        try {
+            $jobOffer = JobOffer::find($id);
 
+            if (!$jobOffer) {
+                return response()->json([
+                    'message' => 'Job offer not found',
+                ], 404);
+            }
+
+            $jobOffer->delete();
+
+            return response()->json([
+                'message' => 'Success',
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'There was an issue with the server',
+            ], 500);
+        }
+    }
 }

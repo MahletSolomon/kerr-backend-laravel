@@ -10,6 +10,8 @@ use \App\Http\Controllers\GalleryController;
 use \App\Http\Controllers\JobController;
 use \App\Http\Controllers\SearchController;
 use \App\Http\Controllers\JobBidController;
+use \App\Http\Controllers\JobOfferController;
+use \App\Http\Controllers\JobContractController;
 
 
 Route::prefix('/v1/user')->group(function (){
@@ -84,5 +86,17 @@ Route::prefix('/v1/job-bid')->group(function (){
         Route::post('','postJobBid');
         Route::get('','getJobBid');
         Route::delete('/{id}','deleteBid');
+    });
+});
+Route::prefix('/v1/job-offer')->group(function (){
+    Route::controller(JobOfferController::class)->group(function (){
+        Route::post('','postJobOffer');
+        Route::get('','getJobOffer');
+        Route::delete('/{id}','deleteOffer');
+    });
+});
+Route::prefix('/v1/job-contract')->group(function (){
+    Route::controller(JobContractController::class)->group(function (){
+        Route::get('','getJobContract');
     });
 });
