@@ -4,8 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\PostController;
+use \App\Http\Controllers\ChatController;
+use \App\Http\Controllers\MessageController;
+use \App\Http\Controllers\GalleryController;
 use \App\Http\Controllers\JobController;
 use \App\Http\Controllers\SearchController;
+use \App\Http\Controllers\JobBidController;
 
 
 Route::prefix('/v1/user')->group(function (){
@@ -56,4 +60,29 @@ Route::prefix('/v1/job')->group(function (){
        });
    });
 });
+Route::prefix('/v1/chat')->group(function (){
+   Route::controller(ChatController::class)->group(function (){
+      Route::post('','postChat');
+   });
+});
 
+Route::prefix('/v1/message')->group(function (){
+    Route::controller(MessageController::class)->group(function (){
+        Route::get('','getMessage');
+    });
+});
+
+Route::prefix('/v1/gallery')->group(function (){
+    Route::controller(GalleryController::class)->group(function (){
+        Route::post('','postGallery');
+        Route::get('/{id}','getGallery');
+        Route::delete('/{id}','deleteGallery');
+    });
+});
+Route::prefix('/v1/job-bid')->group(function (){
+    Route::controller(JobBidController::class)->group(function (){
+        Route::post('','postJobBid');
+        Route::get('','getJobBid');
+        Route::delete('/{id}','deleteBid');
+    });
+});
